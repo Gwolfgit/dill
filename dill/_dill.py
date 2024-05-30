@@ -1735,7 +1735,7 @@ def save_type(pickler, obj, postproc_list=None):
         #     warnings.warn('Type %r may only exist on this implementation of Python and cannot be unpickled in other implementations.' % (obj,), PicklingWarning)
         pickler.save_reduce(_load_type, (_typemap[obj],), obj=obj)
         logger.trace(pickler, "# T1")
-    elif obj.__bases__ == (tuple,) and all([hasattr(obj, attr) for attr in ('_fields','_asdict','_make','_replace')]):
+    elif obj.__bases__ == (tuple,) and all(hasattr(obj, attr) for attr in ('_fields','_asdict','_make','_replace')):
         # special case: namedtuples
         logger.trace(pickler, "T6: %s", obj)
 
