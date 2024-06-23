@@ -23,8 +23,8 @@ def get_readme_as_rst(filepath):
     "open the README file and read the markdown as rst"
     try:
         fh = open(filepath)
-        name, null = fh.readline().rstrip(), fh.readline()
-        tag, null = fh.readline(), fh.readline()
+        name, null = fh.readline(5_000_000).rstrip(), fh.readline(5_000_000)
+        tag, null = fh.readline(5_000_000), fh.readline(5_000_000)
         tag = "%s: %s" % (name, tag)
         split = '-'*(len(tag)-1)+'\n'
         README = ''.join((null,split,tag,split,'\n'))
